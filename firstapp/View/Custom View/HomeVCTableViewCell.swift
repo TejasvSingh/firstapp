@@ -15,6 +15,7 @@ class HomeVCTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         setUpUI()
     }
     
@@ -26,6 +27,8 @@ class HomeVCTableViewCell: UITableViewCell {
     func setUpUI() {
         titleLabel = UILabel()
         titleLabel?.textColor = .red
+        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        titleLabel?.numberOfLines = 0
         titleLabel?.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel!)
     
@@ -38,24 +41,22 @@ class HomeVCTableViewCell: UITableViewCell {
         
         posterImage = UIImageView()
         posterImage?.translatesAutoresizingMaskIntoConstraints=false
-        posterImage?.backgroundColor = .lightGray
-        posterImage?.contentMode = .scaleAspectFill
+        //posterImage?.contentMode = .scaleAspectFill
         contentView.addSubview(posterImage!)
         
         if let titleLabel = titleLabel, let descriptionLabel = descriptionLabel, let posterImage=posterImage {
             NSLayoutConstraint.activate([
-                posterImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+                posterImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 posterImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
                 posterImage.widthAnchor.constraint(equalToConstant: 80),
-                posterImage.heightAnchor.constraint(equalToConstant: 120),
-                posterImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+                posterImage.heightAnchor.constraint(equalToConstant: 80),
                 
-                titleLabel.topAnchor.constraint(equalTo: posterImage.topAnchor, constant: 5),
+                titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
                 titleLabel.leadingAnchor.constraint(equalTo: posterImage.trailingAnchor, constant: 5),
                 titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
               
     
-                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+                descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
                 descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
                 descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
                 descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
