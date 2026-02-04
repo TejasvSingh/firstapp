@@ -12,8 +12,7 @@ class MovieDetailViewController: UIViewController{
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
     let releaseeDateLabel = UILabel()
-    var x=0
-    var y=1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
